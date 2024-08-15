@@ -13,10 +13,10 @@ import io
 import os
 import os.path
 from pathlib import Path
-import RPI.GPIO as GPIO
+#import RPI.GPIO as GPIO
 
-LED_PIN_RED = 23
-GPIO.setMode(LED_PIN_RED, GPIO.OUT)
+#LED_PIN_RED = 23
+#GPIO.setMode(LED_PIN_RED, GPIO.OUT)
 
 SHARED_DRIVE_ID = "0AJgwtlVQm-JQUk9PVA"
 ROOT_FOLDER_ID = "17wGYvqdbXFs_U47XpB89Rcu9DYWrPl4L"
@@ -38,17 +38,17 @@ camera_Parameters_108MP = {
     }
 
 #Start with all LED's off
-GPIO.output(LED_PIN_RED, GPIO.LOW)
+#GPIO.output(LED_PIN_RED, GPIO.LOW)
 
 #Main Program Loop
 while True:
     #Red LED remains turned on constantly for entire program loop duration
-    GPIO.output(LED_PIN_RED,GPIO.HIGH)    
+    #GPIO.output(LED_PIN_RED,GPIO.HIGH)    
     
     #Create a datetime object containing current time and date
     now = dt.now()
     #If time is 2:00PM (14:00) and within first minute, then take images
-    if now.hour==15 and now.minute==44:
+    if now.hour==13 and now.minute==56:
         #Take image at 20MP resolution
         
         ret20, img20 = CaptureThread_20MP()
@@ -70,27 +70,22 @@ while True:
         source_dir_108MP = Path(source_folder_108MP)
         
         files_20MP = list(source_dir_20MP.glob("**/*"))
-        files_108MP  = list(source_dir_20MP.glob("**/*"))
+        files_108MP  = list(source_dir_108MP.glob("**/*"))
         
         print(files_20MP)
         print(files_108MP)
         
-        drive = GoogleDrive()
+        #drive = GoogleDrive()
        
         #Uploads each image to google drive
-        for file in files_20MP:
-            drive.upload_file(file, destination_folder_20MP)
+        #for file in files_20MP:
+            #drive.upload_file(file, destination_folder_20MP)
             
-        for file2 in files_108MP:
-            drive.upload_file(file2, destination_folder_108MP)
-        
-        time.sleep(5)
-        
-        os.remove('/home/SamuelRPI/Desktop/PavMonSystem/Cam_Interface_Testing/Captures_20MP_Local/Capture_20MP_'+now.strftime("%Y-%b-%d") + '.tiff')
-        os.remove('/home/SamuelRPI/Desktop/PavMonSystem/Cam_Interface_Testing/Captures_108MP_Local/Capture_108MP_'+now.strftime("%Y-%b-%d")+'.tiff')
-
+        #for file2 in files_108MP:
+            #drive.upload_file(file2, destination_folder_108MP)
+            
     time.sleep(5)
     print(now)
 
 #If main loop ends, then Red LED is turned off
-GPIO.output(LED_PIN_RED,GPIO.HIGH)
+#GPIO.output(LED_PIN_RED,GPIO.HIGH)

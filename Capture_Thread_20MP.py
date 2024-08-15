@@ -35,4 +35,3 @@ def CaptureThread_20MP():
         else:
             end = False
             
-CaptureThread_20MP()

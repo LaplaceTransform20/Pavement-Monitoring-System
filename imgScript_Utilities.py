@@ -8,10 +8,10 @@ from datetime import datetime as dt
 def saveFrame_Local(res, img):
     now = dt.now()
     if res=='20MP':
-        cv.imwrite('/home/SamuelRPI/Desktop/PavMonSystem/Cam_Interface_Testing/Captures_20MP_Local/Capture_20MP_'+now.strftime("%Y-%b-%d") +'_hhmmss.tiff', img)
+        cv.imwrite('/home/SamuelRPI/Desktop/PavMonSystem/Cam_Interface_Testing/Captures_20MP_Local/Capture_20MP_' + now.strftime("%Y-%b-%d-%X") + '.tiff', img)
         print("20MP Local Save Successful")
     elif res=='108MP':
-        cv.imwrite('/home/SamuelRPI/Desktop/PavMonSystem/Cam_Interface_Testing/Captures_108MP_Local/Capture_108MP_'+now.strftime("%Y-%b-%d")+'_hhmmss.tiff', img)
+        cv.imwrite('/home/SamuelRPI/Desktop/PavMonSystem/Cam_Interface_Testing/Captures_108MP_Local/Capture_108MP_' + now.strftime("%Y-%b-%d-%X") + '.tiff', img)
         print("108MP Local Save Successful")
         
         

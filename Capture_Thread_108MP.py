@@ -8,7 +8,7 @@ from ArducamEvkSDK import Camera, Param, LoggerLevel, Frame
 from img_cvt_utils import show_image, convert_image
 
 #config = 'ArduCAM_108MP_MIPI_2Lane_RAW8_12000x9000_1.4fps-1.cfg'
-config = 'ArduCAM_108MP_MIPI_2Lane_RAW8_4000x3000_12fps.cfg'
+#config = 'ArduCAM_108MP_MIPI_2Lane_RAW8_4000x3000_12fps.cfg'
 
 camera_Parameters_108MP = {
     "Sensor_Focus" : 380,
@@ -40,7 +40,6 @@ def main(config, cameraParameters):
     #If no supported device found, then the program ends
     if not r:
         raise Exception("open camera error! ret={}".format(camera.last_error))
-    
     
     camera.set_message_callback(log_callback)
     camera.log_level = LoggerLevel.Info
@@ -106,5 +105,5 @@ def main(config, cameraParameters):
 
 #Runs Arducam 108MP imaging function with config file, and 3 parameters
 #Sensor Focus (0-1023), Analog Gain (0-1600), Exposure Time (26-83734)
-main(config, camera_Parameters_108MP)
+#main(config, camera_Parameters_108MP)
 
