@@ -5,9 +5,9 @@ import time
 
 def CaptureThread_20MP():
     
-    #setup Arducam 20MP Camera Module (UVC camera) - /dev/video0
+    #setup Arducam 20MP Camera Module (UVC camera) Object - /dev/video0
     cam20MP = cv.VideoCapture(0)
-
+    
     height_20 = 3672
     width_20 = 5496
     cam20MP_PREV_FRAME_RATE = 9
@@ -15,6 +15,7 @@ def CaptureThread_20MP():
     #Set resolution of 20MP camera to 5496(H)x3672(V)
     cam20MP.set(cv.CAP_PROP_FRAME_HEIGHT,height_20)
     cam20MP.set(cv.CAP_PROP_FRAME_WIDTH, width_20)
+    #Set fps of the video capture
     cam20MP.set(cv.CAP_PROP_FPS, cam20MP_PREV_FRAME_RATE)
     print('20MP Camera set')
     
@@ -33,3 +34,5 @@ def CaptureThread_20MP():
             end = True
         else:
             end = False
+            
+CaptureThread_20MP()
