@@ -7,12 +7,17 @@ from datetime import datetime as dt
 #Saves inputted image as a tiff file, with name based on resolution, Date, Month and Year
 def saveFrame_Local(res, img):
     now = dt.now()
+    
     if res=='20MP':
-        cv.imwrite('/home/SamuelRPI/Desktop/PavMonSystem/Cam_Interface_Testing/Captures_20MP_Local/Capture_20MP_' + now.strftime("%Y-%b-%d-%X") + '.tiff', img)
+        filename = 'Capture_20MP_' + now.strftime("%Y-%b-%d_%-H-%-M-%-S") + '.tiff'
+        cv.imwrite('/home/SamuelRPI/Desktop/PavMonSystem/Cam_Interface_Testing/Captures_20MP_Local/' + filename, img)
         print("20MP Local Save Successful")
+        return filename
     elif res=='108MP':
-        cv.imwrite('/home/SamuelRPI/Desktop/PavMonSystem/Cam_Interface_Testing/Captures_108MP_Local/Capture_108MP_' + now.strftime("%Y-%b-%d-%X") + '.tiff', img)
+        filename = 'Capture_108MP_' + now.strftime("%Y-%b-%d_%-H-%-M-%-S") + '.tiff'
+        cv.imwrite('/home/SamuelRPI/Desktop/PavMonSystem/Cam_Interface_Testing/Captures_108MP_Local/' + filename, img)
         print("108MP Local Save Successful")
+        return filename
         
         
 #Displays Frame given, scaled to some percentage      
