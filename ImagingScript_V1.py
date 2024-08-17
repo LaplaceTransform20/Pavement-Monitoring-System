@@ -24,10 +24,10 @@ config108MP = 'ArduCAM_108MP_MIPI_2Lane_RAW8_12000x9000_1.4fps-1.cfg'
 
 #Control Parameters for the 108MP Camera Module
 camera_Parameters_108MP = {
-    "Sensor_Focus" : 380,
+    "Sensor_Focus" : 500,
     "Sensor_Framerate" : 1,
-    "Sensor_Exposure_Time" : 65000,
-    "Sensor_Analog_Gain" : 177,
+    "Sensor_Exposure_Time" : 75000,
+    "Sensor_Analog_Gain" : 300,
     "Sensor_Digital_Gain(R)" : 126,
     "Sensor_Digital_Gain(B)" : 126,
     "ISP_Gamma_Gain_Enable" : 1,

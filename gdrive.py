@@ -119,4 +119,7 @@ class GoogleDrive():
 
         progress_bar.finish()
 
-
+        #Log the filename that was successfully uploaded
+        logFile = open("uploaded.log", "a")
+        logFile.write("Succesfully Uploaded: " + filename + "\n")
+        logFile.close()        
