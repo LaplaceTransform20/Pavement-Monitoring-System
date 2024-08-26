@@ -1,16 +1,17 @@
 import numpy as np
 import cv2 as cv
 import time
+import json
+
 #from datetime import datetime as dt
 from datetime import datetime, timedelta
 from gdrive import GoogleDrive
 
 import Capture_Thread_108MP
 from Capture_Thread_20MP import *
-
 from imgScript_Utilities import *
-import argparse
 
+import argparse
 import io
 import os
 import os.path
@@ -19,21 +20,7 @@ from pathlib import Path
 SHARED_DRIVE_ID = "0AJgwtlVQm-JQUk9PVA"
 ROOT_FOLDER_ID = "17wGYvqdbXFs_U47XpB89Rcu9DYWrPl4L"
 
-
 config108MP = 'ArduCAM_108MP_MIPI_2Lane_RAW8_12000x9000_1.4fps-1.cfg'
-
-#Control Parameters for the 108MP Camera Module
-camera_Parameters_108MP = {
-    "Sensor_Focus" : 500,
-    "Sensor_Framerate" : 1,
-    "Sensor_Exposure_Time" : 75000,
-    "Sensor_Analog_Gain" : 300,
-    "Sensor_Digital_Gain(R)" : 126,
-    "Sensor_Digital_Gain(B)" : 126,
-    "ISP_Gamma_Gain_Enable" : 1,
-    "ISP_Gain(R)" : 100,
-    "ISP_Gain(B)" : 100,
-    }
 
 
 parser = argparse.ArgumentParser()
@@ -76,9 +63,19 @@ while True:
         #Take 20MP image
         ret20, img20 = CaptureThread_20MP()
         time.sleep(5)
+        
+        #Open JSON file 
+        f = open('Camera_108MP_Parameters.json')
+        
+        #returns json object as dictionary containing camera parameters
+        camParam = json.load(f)
+        
         #Take 108MP image
-        img108 = Capture_Thread_108MP.main(config108MP, camera_Parameters_108MP)
-
+        img108 = Capture_Thread_108MP.main(config108MP, camParam)
+        
+        #Close the json file
+        f.close()
+        
         time.sleep(2)
         filename_20MP = saveFrame_Local('20MP', img20)
         time.sleep(2)
@@ -99,9 +96,19 @@ while True:
         drive = GoogleDrive()
        
         #Uploads each image to google drive
-        drive.upload_file(path_20MP_file, destination_folder_20MP)
-        drive.upload_file(path_108MP_file, destination_folder_108MP)
-          
+        try:
+            drive.upload_file(path_20MP_file, destination_folder_20MP)
+        except:
+            print("Upload Failed")
+            pass
+            
+        try:
+            drive.upload_file(path_108MP_file, destination_folder_108MP)
+        except:
+            print("Upload Failed")
+            pass
+            
+            
         #Gets the next time for image capture
         next_time = get_next_time(start_time, interval)
         start_time = next_time

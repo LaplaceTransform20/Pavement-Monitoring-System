@@ -9,12 +9,12 @@ def saveFrame_Local(res, img):
     now = dt.now()
     
     if res=='20MP':
-        filename = 'Capture_20MP_' + now.strftime("%Y-%b-%d_%-H-%-M-%-S") + '.tiff'
+        filename = 'Capture_20MP_' + now.strftime("%Y-%m-%-d_%-H-%-M-%-S") + '.tiff'
         cv.imwrite('/home/SamuelRPI/Desktop/PavMonSystem/Cam_Interface_Testing/Captures_20MP_Local/' + filename, img)
         print("20MP Local Save Successful")
         return filename
     elif res=='108MP':
-        filename = 'Capture_108MP_' + now.strftime("%Y-%b-%d_%-H-%-M-%-S") + '.tiff'
+        filename = 'Capture_108MP_' + now.strftime("%Y-%m-%-d_%-H-%-M-%-S") + '.tiff'
         cv.imwrite('/home/SamuelRPI/Desktop/PavMonSystem/Cam_Interface_Testing/Captures_108MP_Local/' + filename, img)
         print("108MP Local Save Successful")
         return filename
