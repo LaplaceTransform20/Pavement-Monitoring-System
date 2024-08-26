@@ -65,7 +65,7 @@ while True:
         time.sleep(5)
         
         #Open JSON file 
-        f = open('Camera_108MP_Parameters.json')
+        f = open('Camera_Parameters_108MP.json')
         
         #returns json object as dictionary containing camera parameters
         camParam = json.load(f)

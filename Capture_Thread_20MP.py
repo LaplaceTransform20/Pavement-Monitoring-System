@@ -23,7 +23,6 @@ def CaptureThread_20MP():
     time_start=time.time()
     while end == False:
         ret, img = cam20MP.read()
-        #cv.imshow("IMG", img)
         time_end = time.time()
         diff = time_end - time_start
         #once at least 5 sec has passed, display the current frame.

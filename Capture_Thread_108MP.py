@@ -76,34 +76,24 @@ def main(config, cameraParameters):
         image = cast(Optional[Frame], camera.capture(1000))
         if image is None:
             continue
-        show_image(image) 
         
         print(f"get frame({image.format.width}x{image.format.height}) from camera.")
-        
-        #key = cv2.waitKey(1)
-        #if key == ord('q'):
-            #break
             
         time_end = time.time()
         diff = time_end - time_start
-        cv2.waitKey(1)
         
         if diff >= 5 and image is not None:
             break
-        
-    cv2.destroyAllWindows()
+
     camera.stop()
     camera.close()
     
     #Convert the image data into a image array
     img108MP = convert_image(image.data, image.format)
     
-    #cv2.imwrite("/home/SamuelRPI/Desktop/PavMonSystem/Cam_Interface_Testing/Captures/108MP_TestImage.tiff", img108MP)
-    #print("Save Successful")
     return img108MP
     
 
-#Runs Arducam 108MP imaging function with config file, and 3 parameters
-#Sensor Focus (0-1023), Analog Gain (0-1600), Exposure Time (26-83734)
+#Runs Arducam 108MP imaging function with config file, and parameters dictionary
 #main(config, camera_Parameters_108MP)
 
