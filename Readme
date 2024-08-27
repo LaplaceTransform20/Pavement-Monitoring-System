@@ -1,4 +1,5 @@
 Python Code for the Pavement Monitoring System
+System Runs on the Raspberry Pi 5 
 
 Main Program File: ImagingScript_V1.py
 
@@ -12,6 +13,10 @@ Camera Utilities:
 - imgScript_Utilities.py
 - img_cvt_utils.py
 - img_cvt_utils.pyi
+
+108MP Camera Configuration File:
+- 
+
 
 108MP Camera Parameters:
 - Camera_Parameters_108MP.json
