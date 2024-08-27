@@ -14,9 +14,8 @@ Camera Utilities:
 - img_cvt_utils.py
 - img_cvt_utils.pyi
 
-108MP Camera Configuration File:
-- 
+Arducam 108MP Camera Module Configuration File:
+- ArduCAM_108MP_MIPI_2Lane_RAW8_12000x9000_1.4fps-1.cfg
 
-
-108MP Camera Parameters:
+Arducam 108MP Camera Module Parameters:
 - Camera_Parameters_108MP.json
