@@ -19,3 +19,7 @@ Arducam 108MP Camera Module Configuration File:
 
 Arducam 108MP Camera Module Parameters:
 - Camera_Parameters_108MP.json
+
+Bash Script for deleting Local files
+- file_Deletion_BashScript.sh
+
